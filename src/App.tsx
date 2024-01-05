@@ -19,10 +19,14 @@ function App() {
         <h1 className=' text-red-500 text-xl flex items-center justify-center'>
           aych ai
         </h1>
-        <button className='btn max-w-xs ' onClick={submitPrompt}>
-          Activate AI
-        </button>
-        <div className='text-red-500'>AI Response: {prompt}</div>
+        <div className='flex items-center justify-center'>
+          <button className='btn max-w-xs ' onClick={submitPrompt}>
+            Activate AI
+          </button>
+        </div>
+        <div>
+          <span className='text-red-500'>AI Response:</span> {prompt}
+        </div>
       </div>
     </>
   );
