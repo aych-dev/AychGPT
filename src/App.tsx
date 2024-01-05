@@ -1,34 +1,29 @@
-import React from 'react';
-import './App.css';
-import axios, { AxiosRequestConfig } from 'axios';
+import { useState } from 'react';
+import axios, { AxiosError } from 'axios';
 
-function App(): JSX.Element {
-  const getMessages = async () => {
+function App() {
+  const [prompt, setPrompt] = useState<string>('Ask AI something');
+
+  const submitPrompt = async () => {
     try {
-      const options: AxiosRequestConfig = {
-        method: 'POST',
-        data: {
-          message: 'How are you?',
-        },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-
-      const res = await axios.get(
-        'https://localhost:8000/completions',
-        options
-      );
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
+      const res = await axios.get('http://localhost:8000/completions');
+      setPrompt(res.data);
+    } catch (e) {
+      console.error((e as AxiosError).message);
     }
   };
 
   return (
     <>
-      <div>aych ai</div>
-      <button onClick={getMessages}>testing</button>
+      <div className='grid grid-cols gap-3 items-center justify-center'>
+        <h1 className=' text-red-500 text-xl flex items-center justify-center'>
+          aych ai
+        </h1>
+        <button className='btn max-w-xs ' onClick={submitPrompt}>
+          Activate AI
+        </button>
+        <div className='text-red-500'>AI Response: {prompt}</div>
+      </div>
     </>
   );
 }

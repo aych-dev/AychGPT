@@ -1,25 +1,31 @@
-import OpenAI from 'openai';
-import express from 'express';
-import cors from 'cors';
-import { config } from 'dotenv';
-config();
+const OpenAI = require('openai');
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
 const PORT = 8000;
 const app = express();
-const openai = new OpenAI();
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 app.use(express.json());
 app.use(cors());
 
 app.get('/completions', async (req, res) => {
-  const completion = await openai.chat.completions.create({
-    messages: [
-      { role: 'user', content: 'Who is the most expensive NFL player?' },
-    ],
-    model: 'gpt-3.5-turbo',
-    max_tokens: 10,
-  });
-  res.json(completion.choices[0].message.content);
+  try {
+    const completions = await openai.chat.completions.create({
+      messages: [
+        {
+          role: 'user',
+          content: 'What are the team colors of the New York Mets?',
+        },
+      ],
+      model: 'gpt-3.5-turbo',
+    });
+
+    res.json(completions.choices[0].message.content);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
