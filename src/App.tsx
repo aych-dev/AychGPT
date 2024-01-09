@@ -46,7 +46,19 @@ function App() {
               value={prompt}
             />
             <div className='flex items-center justify-center p-2'>
-              <input type='submit' value='Submit' className='btn' />
+              {loading ? (
+                <button
+                  type='submit'
+                  value='Submit'
+                  className='btn btn-disabled '
+                >
+                  Submit
+                </button>
+              ) : (
+                <button type='submit' value='Submit' className='btn  '>
+                  Submit
+                </button>
+              )}
             </div>
           </label>
         </form>
