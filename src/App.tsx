@@ -17,12 +17,24 @@ function App() {
     <>
       <div className='grid grid-cols gap-3 items-center justify-center'>
         <h1 className=' text-red-500 text-xl flex items-center justify-center'>
-          aych ai
+          Welcome to AychGPT
         </h1>
-        <div className='flex items-center justify-center'>
+        {/* <div className='flex items-center justify-center'>
           <button className='btn max-w-xs ' onClick={submitPrompt}>
             Activate AI
           </button>
+        </div> */}
+        <div className='flex items-center justify-center'>
+          <label className='form-control w-full max-w-xs'>
+            <div className='label'>
+              <span className='label-text text-red-500'>AychAI</span>
+            </div>
+            <input
+              type='text'
+              placeholder='Enter Prompt'
+              className='input input-bordered w-full max-w-xs'
+            />
+          </label>
         </div>
         <div>
           <span className='text-red-500'>AI Response:</span> {prompt}
