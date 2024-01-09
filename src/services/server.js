@@ -10,9 +10,9 @@ const openai = new OpenAI(process.env.OPENAI_API_KEY);
 app.use(express.json());
 app.use(cors());
 
-app.get('/completions', async (req, res) => {
+app.post('/completions', async (req, res) => {
   try {
-    const { messages } = req.body || 'How are you?';
+    const { messages } = req.body;
     const completions = await openai.chat.completions.create({
       messages: [
         {

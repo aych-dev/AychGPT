@@ -46,7 +46,7 @@ function App() {
             </div>
           </label>
         </form>
-        <div>
+        <div className='max-w-2xl'>
           <span className='text-red-500'>AI Response:</span> {aiResponse}
         </div>
       </div>
