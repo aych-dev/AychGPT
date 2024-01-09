@@ -2,9 +2,10 @@ import { useState } from 'react';
 import axios, { AxiosError } from 'axios';
 
 function App() {
-  const [prompt, setPrompt] = useState<string>('Ask AI something');
+  const [prompt, setPrompt] = useState<string>('');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
   const [loading, setIsLoading] = useState<boolean>(false);
+  console.log(aiResponse);
 
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ function App() {
             </div>
             <input
               type='text'
-              placeholder='Enter Prompt'
+              placeholder='Ask AychGPT...'
               className='input input-bordered w-full max-w-xs'
               onChange={(e) => setPrompt(e.target.value)}
               value={prompt}
@@ -51,7 +52,11 @@ function App() {
         </form>
         <div className='max-w-2xl'>
           <span className='text-red-500'>AI Response:</span>{' '}
-          {loading ? 'Loading' : aiResponse}
+          {loading ? (
+            <span className='loading loading-dots loading-md ml-5'></span>
+          ) : (
+            aiResponse
+          )}
         </div>
       </div>
     </>
