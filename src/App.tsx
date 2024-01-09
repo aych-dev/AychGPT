@@ -4,18 +4,19 @@ import axios, { AxiosError } from 'axios';
 function App() {
   const [prompt, setPrompt] = useState<string>('Ask AI something');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setIsLoading] = useState<boolean>(false);
 
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(aiResponse);
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const res = await axios.post('http://localhost:8000/completions', {
         userMessages: prompt,
         assistantMessages: aiResponse,
       });
       setAiResponse(res.data);
+      setIsLoading(false);
     } catch (e) {
       console.error((e as AxiosError).message);
     }
@@ -49,7 +50,8 @@ function App() {
           </label>
         </form>
         <div className='max-w-2xl'>
-          <span className='text-red-500'>AI Response:</span> {aiResponse}
+          <span className='text-red-500'>AI Response:</span>{' '}
+          {loading ? 'Loading' : aiResponse}
         </div>
       </div>
     </>
