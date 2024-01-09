@@ -12,12 +12,18 @@ app.use(cors());
 
 app.post('/completions', async (req, res) => {
   try {
-    const { messages } = req.body;
+    const { userMessages } = req.body;
+    const { assistantMessages } = req.body;
+
     const completions = await openai.chat.completions.create({
       messages: [
         {
           role: 'user',
-          content: messages,
+          content: userMessages,
+        },
+        {
+          role: 'assistant',
+          content: assistantMessages,
         },
       ],
       model: 'gpt-3.5-turbo',

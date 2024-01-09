@@ -4,6 +4,7 @@ import axios, { AxiosError } from 'axios';
 function App() {
   const [prompt, setPrompt] = useState<string>('Ask AI something');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log(aiResponse);
@@ -11,7 +12,8 @@ function App() {
 
     try {
       const res = await axios.post('http://localhost:8000/completions', {
-        messages: prompt,
+        userMessages: prompt,
+        assistantMessages: aiResponse,
       });
       setAiResponse(res.data);
     } catch (e) {
@@ -22,7 +24,7 @@ function App() {
   return (
     <>
       <div className='grid grid-cols gap-3 items-center justify-center'>
-        <h1 className=' text-red-500 text-xl flex items-center justify-center'>
+        <h1 className=' text-red-500 text-xl flex items-center justify-center mt-7 font-bold'>
           Welcome to AychGPT
         </h1>
 
