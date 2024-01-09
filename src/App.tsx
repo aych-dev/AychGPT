@@ -5,7 +5,7 @@ function App() {
   const [prompt, setPrompt] = useState<string>('Ask AI something');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
 
-  const submitPrompt = async (e) => {
+  const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log(aiResponse);
     e.preventDefault();
 
