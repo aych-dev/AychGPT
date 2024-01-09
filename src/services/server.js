@@ -12,11 +12,12 @@ app.use(cors());
 
 app.get('/completions', async (req, res) => {
   try {
+    const { messages } = req.body || 'How are you?';
     const completions = await openai.chat.completions.create({
       messages: [
         {
           role: 'user',
-          content: 'What are the team colors of the New York Mets?',
+          content: messages,
         },
       ],
       model: 'gpt-3.5-turbo',

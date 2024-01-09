@@ -3,11 +3,17 @@ import axios, { AxiosError } from 'axios';
 
 function App() {
   const [prompt, setPrompt] = useState<string>('Ask AI something');
+  const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
 
-  const submitPrompt = async () => {
+  const submitPrompt = async (e) => {
+    console.log(aiResponse);
+    e.preventDefault();
+
     try {
-      const res = await axios.get('http://localhost:8000/completions');
-      setPrompt(res.data);
+      const res = await axios.post('http://localhost:8000/completions', {
+        messages: prompt,
+      });
+      setAiResponse(res.data);
     } catch (e) {
       console.error((e as AxiosError).message);
     }
@@ -19,12 +25,11 @@ function App() {
         <h1 className=' text-red-500 text-xl flex items-center justify-center'>
           Welcome to AychGPT
         </h1>
-        {/* <div className='flex items-center justify-center'>
-          <button className='btn max-w-xs ' onClick={submitPrompt}>
-            Activate AI
-          </button>
-        </div> */}
-        <div className='flex items-center justify-center'>
+
+        <form
+          className='flex items-center justify-center'
+          onSubmit={submitPrompt}
+        >
           <label className='form-control w-full max-w-xs'>
             <div className='label'>
               <span className='label-text text-red-500'>AychAI</span>
@@ -33,11 +38,16 @@ function App() {
               type='text'
               placeholder='Enter Prompt'
               className='input input-bordered w-full max-w-xs'
+              onChange={(e) => setPrompt(e.target.value)}
+              value={prompt}
             />
+            <div className='flex items-center justify-center p-2'>
+              <input type='submit' value='Submit' className='btn' />
+            </div>
           </label>
-        </div>
+        </form>
         <div>
-          <span className='text-red-500'>AI Response:</span> {prompt}
+          <span className='text-red-500'>AI Response:</span> {aiResponse}
         </div>
       </div>
     </>
