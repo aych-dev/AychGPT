@@ -14,7 +14,6 @@ function App() {
       setIsLoading(true);
       const res = await axios.post('http://localhost:8000/completions', {
         userMessages: prompt,
-        assistantMessages: aiResponse,
       });
       setAiResponse(res.data);
       setIsLoading(false);

@@ -21,10 +21,6 @@ app.post('/completions', async (req, res) => {
           role: 'user',
           content: userMessages,
         },
-        {
-          role: 'assistant',
-          content: assistantMessages,
-        },
       ],
       model: 'gpt-3.5-turbo',
     });
