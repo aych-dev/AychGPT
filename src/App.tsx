@@ -21,6 +21,10 @@ function App() {
       console.error((e as AxiosError).message);
     }
   };
+  console.log(prompt);
+  const createChatBox = async (newPrompt: string) => {
+    setPrompt(newPrompt);
+  };
 
   return (
     <>
@@ -41,7 +45,7 @@ function App() {
               type='text'
               placeholder='Ask AychGPT...'
               className='input input-bordered w-full max-w-xs'
-              onChange={(e) => setPrompt(e.target.value)}
+              onChange={(e) => createChatBox(e.target.value)}
               value={prompt}
             />
             <div className='flex items-center justify-center p-2'>
