@@ -13,7 +13,6 @@ app.use(cors());
 app.post('/completions', async (req, res) => {
   try {
     const { userMessages } = req.body;
-    const { assistantMessages } = req.body;
 
     const completions = await openai.chat.completions.create({
       messages: [
