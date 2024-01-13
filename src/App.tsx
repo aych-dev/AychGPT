@@ -5,7 +5,6 @@ function App() {
   const [prompt, setPrompt] = useState<string>('');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
   const [loading, setIsLoading] = useState<boolean>(false);
-  console.log(aiResponse);
 
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,12 +48,12 @@ function App() {
                 <button
                   type='submit'
                   value='Submit'
-                  className='btn btn-disabled '
+                  className='btn btn-disabled mt-3 '
                 >
                   Submit
                 </button>
               ) : (
-                <button type='submit' value='Submit' className='btn  '>
+                <button type='submit' value='Submit' className='btn mt-3  '>
                   Submit
                 </button>
               )}
