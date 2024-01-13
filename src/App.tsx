@@ -5,6 +5,7 @@ function App() {
   const [prompt, setPrompt] = useState<string>('');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
   const [loading, setIsLoading] = useState<boolean>(false);
+  const [chatBox, setChatBox] = useState();
 
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
