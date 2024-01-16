@@ -30,7 +30,7 @@ function App() {
       setIsLoading(true);
       if (chatBox.length < 1) {
         const res = await axios.post('http://localhost:8000/completions', {
-          userMessages: { role: 'user', content: prompt },
+          userMessages: [{ role: 'user', content: prompt }],
         });
 
         setAiResponse(res.data);
