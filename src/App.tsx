@@ -7,42 +7,40 @@ function App() {
   const [loading, setIsLoading] = useState<boolean>(false);
   const [chatBox, setChatBox] = useState([]);
 
-  useEffect(() => {
-    if (chatBox.length > 0) {
-      setChatBox((prevState) => [
-        ...prevState,
-        {
-          role: 'user',
-          content: prompt,
-        },
-        {
-          role: 'assistant',
-          content: aiResponse,
-        },
-      ]);
-    }
-  }, []);
-
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       setIsLoading(true);
       if (chatBox.length < 1) {
         const res = await axios.post('http://localhost:8000/completions', {
           userMessages: [{ role: 'user', content: prompt }],
         });
-
         setAiResponse(res.data);
-        setIsLoading(false);
-      } else if (chatBox.length > 0) {
+        setChatBox([
+          {
+            role: 'user',
+            content: prompt,
+          },
+          {
+            role: 'assistant',
+            content: res.data,
+          },
+        ]);
+      } else {
+        chatBox.push({ role: 'user', content: prompt });
         const res = await axios.post('http://localhost:8000/completions', {
           userMessages: chatBox,
         });
-
         setAiResponse(res.data);
-        setIsLoading(false);
+        setChatBox((prevState) => [
+          ...prevState,
+          {
+            role: 'assistant',
+            content: res.data,
+          },
+        ]);
       }
+      setIsLoading(false);
     } catch (e) {
       console.error((e as AxiosError).message);
     }
