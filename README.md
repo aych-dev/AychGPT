@@ -1,30 +1,12 @@
-# React + TypeScript + Vite
+# AychGPT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to AychGPT. This repository houses the code for a web application that leverages the OpenAI GPT-3 API to create a chatbot similar to ChatGPT. Users can interact with the AI by entering prompts, and the model will generate responses based on the input.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Chat Interface:** The site provides a user-friendly chat interface where users can input prompts and receive AI-generated responses.
 
-## Expanding the ESLint configuration
+- **OpenAI GPT-3 Integration:** The core functionality of the chatbot is powered by the OpenAI GPT-3 language model. The integration allows for dynamic and context-aware responses.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Customization:** Developers can explore and customize the parameters used for interacting with the GPT-3 API, tailoring the experience to their specific needs.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
