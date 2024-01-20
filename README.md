@@ -10,3 +10,10 @@ Welcome to AychGPT. This repository houses the code for a web application that l
 
 - **Customization:** Developers can explore and customize the parameters used for interacting with the GPT-3 API, tailoring the experience to their specific needs.
 
+## Usage
+
+To use the ChatGPT Replica site, follow these steps:
+
+1. **Clone the repository to your local machine.**
+   ```bash
+   git clone https://github.com/your-username/ChatGPT-Replica.git
