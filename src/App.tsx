@@ -130,7 +130,7 @@ function App() {
           {loading ? (
             <span className='loading loading-dots loading-md ml-5'></span>
           ) : (
-            <span className='mx-2'>{aiResponse}</span>
+            <span className='px-2'>{aiResponse}</span>
           )}
         </div>
       </div>
