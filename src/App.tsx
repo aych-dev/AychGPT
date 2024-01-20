@@ -1,11 +1,16 @@
-import { SetStateAction, useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios, { AxiosError } from 'axios';
+
+interface ChatBox {
+  role: string;
+  content: string;
+}
 
 function App() {
   const [prompt, setPrompt] = useState<string>('');
   const [aiResponse, setAiResponse] = useState<string>('I am AychGPT');
   const [loading, setIsLoading] = useState<boolean>(false);
-  const [chatBox, setChatBox] = useState([]);
+  const [chatBox, setChatBox] = useState<ChatBox[]>([]);
 
   const submitPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
