@@ -12,7 +12,7 @@ Welcome to AychGPT. This repository houses the code for a web application that l
 
 ## Usage
 
-To use the ChatGPT Replica site, follow these steps:
+To use AychGPT , follow these steps:
 
 1. **Clone the repository to your local machine.**
    ```bash
