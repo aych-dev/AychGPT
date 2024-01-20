@@ -17,3 +17,16 @@ To use AychGPT , follow these steps:
 1. **Clone the repository to your local machine.**
    ```bash
    git clone https://github.com/your-username/ChatGPT-Replica.git
+
+2. Navigate to the project directory:
+   ```bash
+   cd AychGPT
+
+4. Install the project dependencies:
+   ```bash
+   npm install
+
+6. To run the website locally, use the following command:
+   ```bash
+   npm run dev
+
