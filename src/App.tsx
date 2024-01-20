@@ -20,6 +20,7 @@ function App() {
         const res = await axios.post('http://localhost:8000/completions', {
           userMessages: [{ role: 'user', content: prompt }],
         });
+        setPrompt('');
         setAiResponse(res.data);
         setChatBox([
           {
@@ -36,6 +37,7 @@ function App() {
         const res = await axios.post('http://localhost:8000/completions', {
           userMessages: chatBox,
         });
+        setPrompt('');
         setAiResponse(res.data);
         setChatBox((prevState) => [
           ...prevState,
@@ -74,23 +76,40 @@ function App() {
               onChange={(e) => setPrompt(e.target.value)}
               value={prompt}
             />
-            <div className='flex items-center justify-center p-2'>
+            <div className='grid grid-cols'>
               {loading ? (
-                <button
-                  type='submit'
-                  value='Submit'
-                  className='btn btn-disabled mt-3 '
-                >
-                  Submit
-                </button>
+                <>
+                  <button
+                    type='submit'
+                    value='Submit'
+                    className='btn btn-disabled my-4'
+                  >
+                    Submit
+                  </button>
+                </>
               ) : (
-                <button type='submit' value='Submit' className='btn mt-3  '>
-                  Submit
-                </button>
+                <>
+                  <button type='submit' value='Submit' className='btn my-4'>
+                    Submit
+                  </button>
+                </>
               )}
             </div>
           </label>
         </form>
+        <div className='grid grid-cols'>
+          <div className='flex items-center justify-center'>
+            {loading ? (
+              <button className='btn-xs btn btn-disabled btn-error btn-outline'>
+                New Prompt
+              </button>
+            ) : (
+              <button className='btn-xs btn  btn-error btn-outline'>
+                New Prompt
+              </button>
+            )}
+          </div>
+        </div>
         <div className='max-w-2xl'>
           <span className='text-red-500'>AI Response:</span>{' '}
           {loading ? (
