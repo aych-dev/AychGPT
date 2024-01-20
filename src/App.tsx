@@ -126,11 +126,11 @@ function App() {
           </div>
         </div>
         <div className='max-w-2xl'>
-          <span className='text-red-500 ml-2'>AI Response:</span>{' '}
+          <span className='text-red-500'>AI Response:</span>{' '}
           {loading ? (
             <span className='loading loading-dots loading-md ml-5'></span>
           ) : (
-            aiResponse
+            <span className='mx-2'>{aiResponse}</span>
           )}
         </div>
       </div>
