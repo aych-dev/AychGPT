@@ -125,12 +125,12 @@ function App() {
             )}
           </div>
         </div>
-        <div className='max-w-2xl'>
+        <div className='max-w-2xl mx-2'>
           <span className='text-red-500'>AI Response:</span>{' '}
           {loading ? (
             <span className='loading loading-dots loading-md ml-5'></span>
           ) : (
-            <span className='px-2'>{aiResponse}</span>
+            aiResponse
           )}
         </div>
       </div>
