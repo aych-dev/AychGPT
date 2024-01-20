@@ -52,7 +52,13 @@ function App() {
       console.error((e as AxiosError).message);
     }
   };
-  console.log(chatBox);
+
+  const handleClick = () => {
+    setPrompt('');
+    setChatBox([]);
+    setAiResponse('I am AychGPT');
+    setIsLoading(false);
+  };
 
   return (
     <>
@@ -98,7 +104,10 @@ function App() {
           </label>
         </form>
         <div className='grid grid-cols'>
-          <div className='flex items-center justify-center'>
+          <div
+            className='flex items-center justify-center'
+            onClick={() => handleClick()}
+          >
             {loading ? (
               <button className='btn-xs btn btn-disabled btn-error btn-outline'>
                 New Prompt
