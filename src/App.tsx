@@ -34,9 +34,12 @@ function App() {
         ]);
       } else {
         chatBox.push({ role: 'user', content: prompt });
-        const res = await axios.post('http://localhost:8000/completions', {
-          userMessages: chatBox,
-        });
+        const res = await axios.post(
+          'https://cryptic-anchorage-73113-c632759ca232.herokuapp.com/completions',
+          {
+            userMessages: chatBox,
+          }
+        );
         setPrompt('');
         setAiResponse(res.data);
         setChatBox((prevState) => [
