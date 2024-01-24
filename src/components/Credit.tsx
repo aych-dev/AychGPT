@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Credit = () => {
   return (
     <div className='flex items-center justify-center text-red-500 font-semibold'>
