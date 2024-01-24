@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios, { AxiosError } from 'axios';
+import Credit from './components/Credit';
 
 interface ChatBox {
   role: string;
@@ -133,6 +134,7 @@ function App() {
             aiResponse
           )}
         </div>
+        <Credit />
       </div>
     </>
   );
