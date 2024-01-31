@@ -70,7 +70,10 @@ function App() {
   return (
     <>
       <div className='grid grid-cols gap-3 items-center justify-center'>
-        <h1 className=' text-red-500 text-xl flex items-center justify-center mt-7 font-bold'>
+        <h1
+          onClick={() => handleClick()}
+          className=' text-red-500 text-xl flex items-center justify-center mt-7 font-bold hover:cursor-pointer'
+        >
           Welcome to AychGPT
         </h1>
 
